@@ -1,10 +1,10 @@
 <template>
   <div>
     <h1>fakeLogin</h1>
-    <el-button :plain="false" @click="startGame">スタート</el-button>
+    <el-button :plain="false" @click="startGame()">スタート</el-button>
     <el-input placeholder="IDを入力してください" v-model="input1" id="ID"></el-input>
     <el-input placeholder="パスワードを入力してください" v-model="input2" show-password id="pass"></el-input>
-    <el-button :plain="false" @click="check">OK</el-button>
+    <el-button :plain="false" @click="check(input1, input2)">OK</el-button>
     <!-- <el-button :plain="true" @click="success">success</el-button>
     <el-button :plain="true" @click="warning">warning</el-button>
     <el-button :plain="true" @click="error">error</el-button> -->
@@ -57,13 +57,16 @@ function check(input_ID, input_pass) {
   input_pass = parseInt(input_pass, 10);
   if(limitcount[index] >= 3) {
     Message.error();
+    console.log(error);
   } else {
-    if(password[index] == pass) {
+    if(password[input_ID] == input_pass) {
       Message.success();
-      limitcount[index] = 0;
+      limitcount[input_ID] = 0;
+      console.log(success);
     } else {
-      limitcount[index] = limitcount[index] + 1;
+      limitcount[input_ID] = limitcount[input_ID] + 1;
       Message.warning();
+      console.log(warning);
     }
   }
 }
