@@ -28,18 +28,18 @@
       </div>
     </div> -->
     <div class="wrapper">
-      <div class="fakeLogin">
+      <el-card class="fakeLogin">
         <fake-login />
-      </div>
-      <div class="instruction">
+      </el-card>
+      <el-card class="instruction">
         <instruction />
-      </div>
+      </el-card>
       <!-- <div class="miniTimer">
         <minitimer />
       </div> -->
-      <div class="idList">
+      <el-card class="idList">
         <id-list />
-      </div>
+      </el-card>
     </div>
   </div>
 </template>
@@ -102,5 +102,10 @@ export default {};
 .fakeLogin {
   grid-column: 1;
   grid-row: 1 / 3;
+}
+
+.el-card {
+  max-width: 95%;
+  margin: 5%;
 }
 </style>
