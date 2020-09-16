@@ -1,12 +1,12 @@
 <template>
   <div class="mainmenu">
+    <h1 class="title">
+      summer-hackathon2020
+    </h1>
     <!-- <div class="container">
       <div>
         <Logo />
         
-        <h1 class="title">
-          summer-hackathon2020
-        </h1>
         <div class="links">
           <a
             href="https://nuxtjs.org/"
@@ -27,33 +27,38 @@
         </div>
       </div>
     </div> -->
-    <fakeLogin />
-    <div>
-      <idList />
-    </div>
-    <div>
-      <instruction />
-    </div>
-    <div>
-      <miniTimer />
+    <div class="wrapper">
+      <div class="fakeLogin">
+        <fake-login />
+      </div>
+      <div class="instruction">
+        <instruction />
+      </div>
+      <!-- <div class="miniTimer">
+        <minitimer />
+      </div> -->
+      <div class="idList">
+        <id-list />
+      </div>
     </div>
   </div>
 </template>
 
-<script>//コンポーネントインポート
-import fakeLogin from "~/components/fakeLogin";
-import idList from "~/components/idList";
+<script>
+//コンポーネントインポート
+import fakelogin from "~/components/fakeLogin";
+import idlist from "~/components/idList";
 import instruction from "~/components/instruction";
-import miniTimer from "~/components/miniTimer";
+import minitimer from "~/components/miniTimer";
 
-
-export default {}
+export default {};
 </script>
 
 <style>
 .mainmenu {
-  column-count: 2;
-  column-gap: 0;
+  /* column-count: 2;
+  column-gap: 2; */
+  height: 500px;
 }
 
 .container {
@@ -66,21 +71,15 @@ export default {}
 }
 
 .title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 300;
-  font-size: 100px;
+  font-size: 30px;
   color: #35495e;
   letter-spacing: 1px;
+  margin-left: 15px;
+  margin-bottom: 15px;
 }
 
 .subtitle {
@@ -93,5 +92,15 @@ export default {}
 
 .links {
   padding-top: 15px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 200px 200px;
+  grid-gap: 10px;
+}
+.fakeLogin {
+  grid-column: 1;
+  grid-row: 1 / 3;
 }
 </style>
