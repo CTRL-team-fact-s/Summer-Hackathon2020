@@ -1,12 +1,12 @@
 <template>
   <div class="mainmenu">
+    <h1 class="title">
+      summer-hackathon2020
+    </h1>
     <!-- <div class="container">
       <div>
         <Logo />
         
-        <h1 class="title">
-          summer-hackathon2020
-        </h1>
         <div class="links">
           <a
             href="https://nuxtjs.org/"
@@ -27,35 +27,38 @@
         </div>
       </div>
     </div> -->
-    <div class="container">
-      <fakeLogin />
-    </div>
-    <div class="subtitle">
-      <idList />
-    </div>
-    <div class = "subtitle">
-      <instruction />
-    </div>
-    <div>
-      <miniTimer />
+    <div class="wrapper">
+      <div class="fakeLogin">
+        <fakeLogin />
+      </div>
+      <div class="instruction">
+        <instruction />
+      </div>
+      <div class="miniTimer">
+        <miniTimer />
+      </div>
+      <div class="idList">
+        <idList />
+      </div>
     </div>
   </div>
 </template>
 
-<script>//コンポーネントインポート
+<script>
+//コンポーネントインポート
 import fakeLogin from "~/components/fakeLogin";
 import idList from "~/components/idList";
 import instruction from "~/components/instruction";
-
 import miniTimer from "~/components/miniTimer";
 
-export default {}
+export default {};
 </script>
 
 <style>
 .mainmenu {
-  column-count: 2;
-  column-gap: 0;
+  /* column-count: 2;
+  column-gap: 2; */
+  height: 500px;
 }
 
 .container {
@@ -68,21 +71,15 @@ export default {}
 }
 
 .title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 300;
-  font-size: 100px;
+  font-size: 30px;
   color: #35495e;
   letter-spacing: 1px;
+  margin-left: 15px;
+  margin-bottom: 15px;
 }
 
 .subtitle {
@@ -95,5 +92,21 @@ export default {}
 
 .links {
   padding-top: 15px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 200px 200px;
+  grid-gap: 10px;
+}
+.instruction {
+  /* padding-top: 15px;
+  padding-left: 15px;
+  width : 100px; */
+}
+.fakeLogin {
+  /* padding-top: 15px;
+  padding-left: 15px;
+  width : 100px; */
 }
 </style>
