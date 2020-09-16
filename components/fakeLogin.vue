@@ -1,15 +1,39 @@
 <template>
   <div>
     <h1>fakeLogin</h1>
-    <el-input placeholder="番号を入力してください" v-model="input"></el-input>
-    <el-input placeholder="パスワードを入力してください" v-model="input" show-password></el-input>
+    <el-button :plain="true" @click="startGame">スタート</el-button>
+    <el-input placeholder="IDを入力してください" v-model="input1" id="ID"></el-input>
+    <el-input placeholder="パスワードを入力してください" v-model="input2" show-password id="pass"></el-input>
+    <el-button :plain="true" @click="check">OK</el-button>
+    <!-- <el-button :plain="true" @click="success">success</el-button>
+    <el-button :plain="true" @click="warning">warning</el-button>
+    <el-button :plain="true" @click="open4">error</el-button> -->
   </div>
 </template>
 <script>
+import { Message } from 'element-ui';
 export default {
   data() {
     return {
-      input: ''
+      input1: '',
+      input2: ''
+    }
+  },
+  method: {
+    success() {
+      this.$message({
+        message: 'アクセスに成功しました。',
+        type: 'success'
+      });
+    },
+    warning() {
+      this.$message({
+        message: 'IDまたはパスワードが間違っています',
+        type: 'warning'
+      });
+    },
+    open4() {
+      this.$message.error('パスワードを3回以上間違えたためアクセスできません。');
     }
   }
 }
@@ -20,21 +44,26 @@ function getRandomInt(min, max) {
 }
 let password;
 let limitcount;
+var input_ID = Message.input1;
+var input_pass = Message.input2;
 function startGame() {
   for (let i = 0; i < 30; i++) {
     password.push(getRandomInt(0, 20));
     limitcount.push(0);
   }
 }
-function check(index, pass) {
-  limitcount[index] = limitcount[index] + 1;
-  if(limitcount[index] > 3) {
-
+function check(input_ID, input_pass) {
+  input_ID = parseInt(input_ID, 10);
+  input_pass = parseInt(input_pass, 10);
+  if(limitcount[index] >= 3) {
+    Message.error();
   } else {
     if(password[index] == pass) {
-
+      Message.success();
+      limitcount[index] = 0;
     } else {
-      
+      limitcount[index] = limitcount[index] + 1;
+      Message.warning();
     }
   }
 }

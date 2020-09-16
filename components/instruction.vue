@@ -1,5 +1,7 @@
 <template>
   <div>
-    <p>instruction</p>
+    <h2>instruction</h2>
+    リバースブルートフォース攻撃とは、特定のパスワードと、IDに使用されている文字列の組み合わせを使って、総当たり的にログインを試みる攻撃のことです。
+    
   </div>
 </template>

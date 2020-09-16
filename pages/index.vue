@@ -29,16 +29,16 @@
     </div> -->
     <div class="wrapper">
       <div class="fakeLogin">
-        <fakeLogin />
+        <fakelogin />
       </div>
       <div class="instruction">
         <instruction />
       </div>
-      <div class="miniTimer">
-        <miniTimer />
-      </div>
+      <!-- <div class="miniTimer">
+        <minitimer />
+      </div> -->
       <div class="idList">
-        <idList />
+        <idlist />
       </div>
     </div>
   </div>
@@ -46,10 +46,10 @@
 
 <script>
 //コンポーネントインポート
-import fakeLogin from "~/components/fakeLogin";
-import idList from "~/components/idList";
+import fakelogin from "~/components/fakeLogin";
+import idlist from "~/components/idList";
 import instruction from "~/components/instruction";
-import miniTimer from "~/components/miniTimer";
+import minitimer from "~/components/miniTimer";
 
 export default {};
 </script>
@@ -99,14 +99,8 @@ export default {};
   grid-template-rows: 200px 200px;
   grid-gap: 10px;
 }
-.instruction {
-  /* padding-top: 15px;
-  padding-left: 15px;
-  width : 100px; */
-}
 .fakeLogin {
-  /* padding-top: 15px;
-  padding-left: 15px;
-  width : 100px; */
+  grid-column: 1;
+  grid-row: 1 / 3;
 }
 </style>
