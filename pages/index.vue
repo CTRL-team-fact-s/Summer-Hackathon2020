@@ -29,7 +29,7 @@
     </div> -->
     <div class="wrapper">
       <div class="fakeLogin">
-        <fakelogin />
+        <fake-login />
       </div>
       <div class="instruction">
         <instruction />
@@ -38,7 +38,7 @@
         <minitimer />
       </div> -->
       <div class="idList">
-        <idlist />
+        <id-list />
       </div>
     </div>
   </div>
