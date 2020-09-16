@@ -1,37 +1,63 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        summer-hackathon2020
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <div class="mainmenu">
+    <!-- <div class="container">
+      <div>
+        <Logo />
+        
+        <h1 class="title">
+          summer-hackathon2020
+        </h1>
+        <div class="links">
+          <a
+            href="https://nuxtjs.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button--green"
+          >
+            Documentation
+          </a>
+          <a
+            href="https://github.com/nuxt/nuxt.js"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button--grey"
+          >
+            GitHub
+          </a>
+        </div>
       </div>
+    </div> -->
+    <div class="container">
+      <fakeLogin />
+    </div>
+    <div class="subtitle">
+      <idList />
+    </div>
+    <div class = "subtitle">
+      <instruction />
+    </div>
+    <div>
+      <miniTimer />
     </div>
   </div>
 </template>
 
-<script>
+<script>//コンポーネントインポート
+import fakeLogin from "~/components/fakeLogin";
+import idList from "~/components/idList";
+import instruction from "~/components/instruction";
+
+import miniTimer from "~/components/miniTimer";
+
 export default {}
 </script>
 
 <style>
+.mainmenu {
+  column-count: 2;
+  column-gap: 0;
+}
+
 .container {
   margin: 0 auto;
   min-height: 100vh;
