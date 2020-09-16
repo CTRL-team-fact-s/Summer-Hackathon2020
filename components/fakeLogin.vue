@@ -1,10 +1,10 @@
 <template>
   <div>
     <h1>fakeLogin</h1>
-    <el-button :plain="true" @click="startGame">スタート</el-button>
+    <el-button :plain="false" @click="startGame">スタート</el-button>
     <el-input placeholder="IDを入力してください" v-model="input1" id="ID"></el-input>
     <el-input placeholder="パスワードを入力してください" v-model="input2" show-password id="pass"></el-input>
-    <el-button :plain="true" @click="check">OK</el-button>
+    <el-button :plain="false" @click="check">OK</el-button>
     <!-- <el-button :plain="true" @click="success">success</el-button>
     <el-button :plain="true" @click="warning">warning</el-button>
     <el-button :plain="true" @click="error">error</el-button> -->
@@ -78,6 +78,6 @@ function stopShowing() {
 // 繰り返し処理の中身
 function showPassage() {
   //  ～ 何らかの処理 ～
-  
+
 }
 </script>
