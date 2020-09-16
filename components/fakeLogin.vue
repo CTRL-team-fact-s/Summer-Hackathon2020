@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>fakeLogin</h1>
+    <h2>fakeLogin</h2>
     <el-button :plain="false" @click="startGame()">スタート</el-button>
     <el-input placeholder="IDを入力してください" v-model="input1" id="ID"></el-input>
     <el-input placeholder="パスワードを入力してください" v-model="input2" show-password id="pass"></el-input>
@@ -51,6 +51,7 @@ function startGame() {
     password.push(getRandomInt(0, 20));
     limitcount.push(0);
   }
+  return;
 }
 function check(input_ID, input_pass) {
   input_ID = parseInt(input_ID, 10);
@@ -69,6 +70,7 @@ function check(input_ID, input_pass) {
       console.log(warning);
     }
   }
+  return;
 }
 // 繰り返し処理の開始
 function startShowing() {
