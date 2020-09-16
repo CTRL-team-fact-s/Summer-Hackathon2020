@@ -7,7 +7,7 @@
     <el-button :plain="true" @click="check">OK</el-button>
     <!-- <el-button :plain="true" @click="success">success</el-button>
     <el-button :plain="true" @click="warning">warning</el-button>
-    <el-button :plain="true" @click="open4">error</el-button> -->
+    <el-button :plain="true" @click="error">error</el-button> -->
   </div>
 </template>
 <script>
@@ -32,7 +32,7 @@ export default {
         type: 'warning'
       });
     },
-    open4() {
+    error() {
       this.$message.error('パスワードを3回以上間違えたためアクセスできません。');
     }
   }
@@ -67,5 +67,17 @@ function check(input_ID, input_pass) {
     }
   }
 }
-
+// 繰り返し処理の開始
+function startShowing() {
+  PassageID = setInterval('showPassage()',1000);
+}
+// 繰り返し処理の中止
+function stopShowing() {
+  clearInterval( PassageID );
+}
+// 繰り返し処理の中身
+function showPassage() {
+  //  ～ 何らかの処理 ～
+  
+}
 </script>
