@@ -2,12 +2,15 @@
   <div>
     <h2>fakeLogin</h2>
     <el-button :plain="true" @click="start">スタート</el-button>
-    <el-input placeholder="IDを入力" v-model="input1" id="ID" type="number"></el-input>
-    <el-input placeholder="パスワードを入力" v-model="input2" show-password id="pass" type="number"></el-input>
+    <el-input placeholder="IDを入力" v-model="input1" id="ID" type="number" :disabled=inputdisable></el-input>
+    <el-input placeholder="パスワードを入力" v-model="input2" show-password id="pass" type="number" :disabled=inputdisable></el-input>
     <el-button :plain="true" @click="finish">OK</el-button>
     <!-- <el-button :plain="true" @click="success">success</el-button>
     <el-button :plain="true" @click="warning">warning</el-button>
     <el-button :plain="true" @click="error">error</el-button> -->
+    <div class="time">
+      {{ formatTime }}
+    </div>
   </div>
 </template>
 <script>
@@ -16,13 +19,21 @@ let password;
 let limitcount;
 var input_ID = Message.input1;
 var input_pass = Message.input2;
+const time_limit_min = 0;
+const time_limit_sec = 10;
 export default {
+  name: 'timer',
   data() {
     password : [];
     limitcount : [];
     return {
       input1: '',
       input2: '',
+      min: time_limit_min,
+      sec: time_limit_sec,
+      timerOn: false,
+      timerObj: null,
+      inputdisable: false,
     }
   },
   methods: {
@@ -50,6 +61,14 @@ export default {
         this.limitcount.push(0);
       }
       this.$message('IDとパスワードを入力してください');
+
+      // タイマー処理
+      let self = this;
+      this.timerObj = setInterval(function() {self.count()}, 1000);
+      this.timerOn = true; //timerがOFFであることを状態として保持
+      this.inputdisable = false;
+      this.min = time_limit_min;
+      this.sec = time_limit_sec;
     },
     finish: function () {
       // check();
@@ -69,6 +88,10 @@ export default {
           });
           this.limitcount[input_ID] = 0;
           console.log("success");
+
+          // タイマー処理
+          clearInterval(this.timerObj);
+          this.timerOn = false; //timerがOFFであることを状態として保持
         } else {
           this.limitcount[input_ID] = this.limitcount[input_ID] + 1;
           // this.warning();
@@ -80,13 +103,38 @@ export default {
         }
       }
     },
-    greet: function (event) {
-      // `this` inside methods points to the Vue instance
-      alert('Hello ' + this.name + '!')
-      // `event` is the native DOM event
-      if (event) {
-        alert(event.target.tagName)
+    count: function() {
+      if (this.sec <= 0 && this.min >= 1) {
+        this.min --;
+        this.sec = 59;
+      } else if(this.sec <= 0 && this.min <= 0) {
+        this.complete();
+      } else {
+        this.sec --;
       }
+    },
+    complete: function() {
+      if(this.timerOn == true) {
+        this.$message.error('制限時間を過ぎたため、アクセスできません。');
+      }
+      this.inputdisable = true;
+      clearInterval(this.timerObj);
+      this.timerOn = false; //timerがOFFであることを状態として保持
+    }
+  },
+  computed: {
+    formatTime: function() {
+      let timeStrings = [
+        this.min.toString(),
+        this.sec.toString()
+      ].map(function(str) {
+        if (str.length < 2) {
+          return "0" + str;
+        } else {
+          return str;
+        }
+      });
+      return timeStrings[0] + ":" + timeStrings[1];
     }
   }
 };
@@ -124,17 +172,4 @@ function check(input_ID, input_pass) {
 };
 */
 
-// 繰り返し処理の開始
-function startShowing() {
-  PassageID = setInterval('showPassage()',1000);
-};
-// 繰り返し処理の中止
-function stopShowing() {
-  clearInterval( PassageID );
-}
-// 繰り返し処理の中身
-function showPassage() {
-  //  ～ 何らかの処理 ～
-
-}
 </script>
