@@ -12,14 +12,20 @@
 </template>
 <script>
 import { Message } from 'element-ui';
+let password;
+let limitcount;
+var input_ID = Message.input1;
+var input_pass = Message.input2;
 export default {
   data() {
+    password : [];
+    limitcount : [];
     return {
       input1: '',
       input2: '',
     }
   },
-  method: {
+  methods: {
     success() {
       this.$message({
         message: 'アクセスに成功しました。',
@@ -35,11 +41,49 @@ export default {
     error() {
       this.$message.error('パスワードを3回以上間違えたためアクセスできません。');
     },
-    start() {
-      this.$startGame();
+    start: function () {
+      // startGame();
+      this.password = [19,20];
+      this.limitcount = [0,0];
+      for (let i = 0; i < 28; i++) {
+        this.password.push(getRandomInt(0, 20));
+        this.limitcount.push(0);
+      }
+      this.$message('IDとパスワードを入力してください');
     },
-    finish() {
-      this.$check();
+    finish: function () {
+      // check();
+      if(this.limitcount[input_ID] >= 3) {
+        // this.error();
+        this.$message.error('パスワードを3回以上間違えたためアクセスできません。');
+        console.log("error");
+      } else {
+        if(this.password[input_ID] === input_pass) {
+          // this.success();
+          this.$message({
+            message: 'アクセスに成功しました。',
+            type: 'success'
+          });
+          this.limitcount[input_ID] = 0;
+          console.log("success");
+        } else {
+          this.limitcount[input_ID] = this.limitcount[input_ID] + 1;
+          // this.warning();
+          this.$message({
+            message: 'IDまたはパスワードが間違っています',
+            type: 'warning'
+          });
+          console.log("warning");
+        }
+      }
+    },
+    greet: function (event) {
+      // `this` inside methods points to the Vue instance
+      alert('Hello ' + this.name + '!')
+      // `event` is the native DOM event
+      if (event) {
+        alert(event.target.tagName)
+      }
     }
   }
 };
@@ -48,21 +92,19 @@ function getRandomInt(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 };
-let password;
-let limitcount;
-var input_ID = Message.input1;
-var input_pass = Message.input2;
-function startGame() {
-  password = '';
-  limitcount = '';
-  for (let i = 0; i < 30; i++) {
+
+/*
+function startGame(){
+  password = [19,20];
+  limitcount = [0,0];
+  for (let i = 0; i < 28; i++) {
     password.push(getRandomInt(0, 20));
     limitcount.push(0);
   }
-  return;
 };
+
 function check(input_ID, input_pass) {
-  if(limitcount[index] >= 3) {
+  if(limitcount[input_ID] >= 3) {
     Message.error();
     console.log(error);
   } else {
@@ -76,8 +118,9 @@ function check(input_ID, input_pass) {
       console.log(warning);
     }
   }
-  return;
 };
+*/
+
 // 繰り返し処理の開始
 function startShowing() {
   PassageID = setInterval('showPassage()',1000);
