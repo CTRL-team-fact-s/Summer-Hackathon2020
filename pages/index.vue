@@ -29,7 +29,7 @@
     </div> -->
     <div class="wrapper">
       <el-card class="fakeLogin">
-        <fake-login />
+        <fakelogin />
       </el-card>
       <el-card class="instruction">
         <instruction />
@@ -38,7 +38,7 @@
         <minitimer />
       </div> -->
       <el-card class="idList">
-        <id-list />
+        <idlist />
       </el-card>
     </div>
   </div>
@@ -51,7 +51,14 @@ import idlist from "~/components/idList";
 import instruction from "~/components/instruction";
 import minitimer from "~/components/miniTimer";
 
-export default {};
+export default {
+  components: {
+    fakelogin,
+    idlist,
+    instruction,
+    minitimer
+  }
+};
 </script>
 
 <style>
