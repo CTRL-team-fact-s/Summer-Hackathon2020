@@ -60,7 +60,7 @@ export default {
       // startGame();
       this.password = [19,20];
       this.limitcount = [0,0];
-      for (let i = 0; i < 28; i++) {
+      for (let i = 0; i < 98; i++) {
         this.password.push(getRandomInt(0, 20));
         this.limitcount.push(0);
       }
