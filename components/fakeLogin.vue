@@ -53,12 +53,15 @@ export default {
     },
     finish: function () {
       // check();
+      input_ID = this.input1;
+      input_pass = this.input2;
+      console.log(input_ID);
       if(this.limitcount[input_ID] >= 3) {
         // this.error();
         this.$message.error('パスワードを3回以上間違えたためアクセスできません。');
         console.log("error");
       } else {
-        if(this.password[input_ID] === input_pass) {
+        if(this.password[input_ID] == input_pass) {
           // this.success();
           this.$message({
             message: 'アクセスに成功しました。',
