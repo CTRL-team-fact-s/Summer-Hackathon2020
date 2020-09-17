@@ -1,3 +1,11 @@
+const routerBase =
+  process.env.DEPLOY_ENV === 'GH_PAGES'
+    ? {
+      router: {
+        base: '/Summer-Hackathon2020/'
+      }
+    }
+    : {};
 
 export default {
   /*
@@ -59,5 +67,8 @@ export default {
   */
   build: {
     transpile: [/^element-ui/],
+  },
+  router: {
+    base: '/Summer-Hackathon2020/'
   }
 }
