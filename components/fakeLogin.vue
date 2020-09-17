@@ -12,6 +12,9 @@
     <div class="time">
       制限時間：  {{ formatTime }}
     </div>
+    <div>
+      始めるにはスタートボタンを押してください。アクセスに成功するとカウントダウンが止まります。
+    </div>
   </div>
 </template>
 <script>
