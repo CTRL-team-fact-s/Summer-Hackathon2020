@@ -1,15 +1,16 @@
 <template>
   <div>
     <h2>fakeLogin</h2>
-    <el-button :plain="true" @click="start">スタート</el-button>
-    <el-input placeholder="IDを入力" v-model="input1" id="ID" type="number" :disabled=inputdisable></el-input>
-    <el-input placeholder="パスワードを入力" v-model="input2" show-password id="pass" type="number" :disabled=inputdisable></el-input>
-    <el-button :plain="true" @click="finish">OK</el-button>
+    <el-button :plain="true" @click="start" class="input">スタート</el-button>
+    <el-input placeholder="IDを入力" v-model="input1" id="ID" type="number" :disabled=inputdisable class="input"></el-input>
+    <el-input placeholder="パスワードを入力" v-model="input2" show-password id="pass" type="number" :disabled=inputdisable class="input"></el-input>
+    <el-button :plain="true" @click="finish" class="input">OK</el-button>
     <!-- <el-button :plain="true" @click="success">success</el-button>
     <el-button :plain="true" @click="warning">warning</el-button>
     <el-button :plain="true" @click="error">error</el-button> -->
+      
     <div class="time">
-      {{ formatTime }}
+      制限時間：  {{ formatTime }}
     </div>
   </div>
 </template>
@@ -19,8 +20,8 @@ let password;
 let limitcount;
 var input_ID = Message.input1;
 var input_pass = Message.input2;
-const time_limit_min = 0;
-const time_limit_sec = 10;
+const time_limit_min = 1;
+const time_limit_sec = 30;
 export default {
   name: 'timer',
   data() {
@@ -173,3 +174,12 @@ function check(input_ID, input_pass) {
 */
 
 </script>
+<style>
+.input {
+  margin-top:5px;
+  margin-bottom: 5px;
+}
+.time {
+  font-size: 18px;
+}
+</style>
