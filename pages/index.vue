@@ -106,6 +106,9 @@ export default {};
 
 .el-card {
   max-width: 95%;
-  margin: 5%;
+}
+
+.fakeLogin {
+  margin-left: 5%;
 }
 </style>
